@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: ../../layouts/BlogPost.astro
 title: "The Best Latex Pillow Australia Has to Offer in 2026"
 
 categories: 
