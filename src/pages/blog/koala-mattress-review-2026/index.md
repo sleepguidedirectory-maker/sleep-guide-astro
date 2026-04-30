@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: ../../layouts/BlogPost.astro
 title: "Koala Mattress Review 2026: Is It Worth the Hype?"
 
 categories: 
