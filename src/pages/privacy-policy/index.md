@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/BlogPost.astro"
+layout: ../../layouts/BlogPost.astro
 title: "Privacy Policy"
 pubDate: "2025-12-09"
 description: "Privacy policy for Sleep Guide Australia."
