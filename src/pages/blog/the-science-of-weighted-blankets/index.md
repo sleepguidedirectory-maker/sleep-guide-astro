@@ -1,4 +1,5 @@
----layout: ../../layouts/BlogPost.astro
+---
+layout: ~/layouts/BlogPost.astro
 title: "The Science of the \"Heavy Hug\": A Guide to Weighted Blankets"
 
 categories: 
