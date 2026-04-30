@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BlogPost.astro
+layout: ~/layouts/BlogPost.astro
 title: "Best Mattress for Back Pain in Australia 2026"
 
 categories: 
