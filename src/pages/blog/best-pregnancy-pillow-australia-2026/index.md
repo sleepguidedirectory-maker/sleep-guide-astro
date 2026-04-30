@@ -1,5 +1,5 @@
 ---
-layout: ~/layouts/BlogPost.astro
+layout: ../../../layouts/BlogPost.astro
 title: "Best Pregnancy Pillow Australia 2026: Sleep Soundly &amp; Supported"
 
 categories: 

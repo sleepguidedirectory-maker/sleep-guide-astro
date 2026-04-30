@@ -1,5 +1,5 @@
 ---
-layout: ~/layouts/BlogPost.astro
+layout: ../../../layouts/BlogPost.astro
 title: "How to Choose the Right Pillow: The Ultimate Guide to Stopping Neck Pain"
 
 categories: 

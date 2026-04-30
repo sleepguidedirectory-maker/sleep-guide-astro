@@ -1,5 +1,5 @@
 ---
-layout: ~/layouts/BlogPost.astro
+layout: ../../layouts/BlogPost.astro
 title: "About Us"
 pubDate: "2026-01-01"
 description: "About Sleep Guide Australia — honest, independent sleep product reviews."

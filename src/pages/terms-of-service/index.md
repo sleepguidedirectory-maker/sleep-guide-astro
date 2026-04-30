@@ -1,5 +1,5 @@
 ---
-layout: ~/layouts/BlogPost.astro
+layout: ../../layouts/BlogPost.astro
 title: "Terms of Service"
 pubDate: "2026-01-01"
 description: "Terms of service for Sleep Guide Australia."
