@@ -1,5 +1,5 @@
 ---
-../../../layouts/BlogPost.astro
+layout: ../../../layouts/BlogPost.astro
 title: "Say Goodbye to Snoring: Discover the Best Anti Snore Pillow Australia Has to Offer"
 
 categories: 
