@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BlogPost.astro
+layout: ~/layouts/BlogPost.astro
 title: "Contact"
 pubDate: "2026-01-01"
 description: "Get in touch with Sleep Guide Australia."
