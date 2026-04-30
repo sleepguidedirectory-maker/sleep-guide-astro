@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/BlogPost.astro"
+layout: ../../layouts/BlogPost.astro
 title: "Best Mattress Australia 2026: Top 7 Reviews"
 pubDate: "2025-12-10"
 description: "Top 7 mattress reviews in Australia for 2026."
