@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BlogPost.astro
+layout: ~/layouts/BlogPost.astro
 title: "Best Mattress Australia (in a Box)  2026"
 
 categories: 
