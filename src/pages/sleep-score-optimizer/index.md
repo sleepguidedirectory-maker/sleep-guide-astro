@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/BlogPost.astro"
+layout: ../../layouts/BlogPost.astro
 title: "Sleep Score Optimizer: Improve Your Sleep Score in 30 Days"
 pubDate: "2026-01-08"
 description: "Improve your sleep score in 30 days with our optimizer."
