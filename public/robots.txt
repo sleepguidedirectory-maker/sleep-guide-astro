@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sleepguide.com.au/sitemap.xml
+Sitemap: https://www.sleepguide.com.au/sitemap.xml/
