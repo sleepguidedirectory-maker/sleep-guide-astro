@@ -1,30 +1,59 @@
+ · ASTRO
+Copy
+
 ---
 interface Props {
   title: string;
   pubDate: string;
   description: string;
   categories?: string[];
+  heroImage?: string;
 }
-const { title, pubDate, description, categories } = Astro.props;
-
+const { title, pubDate, description, categories, heroImage } = Astro.props;
+ 
 // Format date nicely
 const formattedDate = new Date(pubDate).toLocaleDateString('en-AU', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 });
-
+ 
 // Estimate read time (will show 5 min as default since we can't count words server-side easily)
 const category = categories?.[0] || 'Sleep Guide';
 ---
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <!-- Primary SEO -->
   <title>{title} | SleepGuide.com.au</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={`https://sleepguide.com.au${Astro.url.pathname}`} />
+ 
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={`${title} | SleepGuide.com.au`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={`https://sleepguide.com.au${Astro.url.pathname}`} />
+  <meta property="og:site_name" content="SleepGuide.com.au" />
+  <meta property="og:locale" content="en_AU" />
+  {heroImage && <meta property="og:image" content={heroImage} />}
+  {!heroImage && <meta property="og:image" content="https://sleepguide.com.au/og-default.jpg" />}
+  <meta property="article:published_time" content={pubDate} />
+ 
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | SleepGuide.com.au`} />
+  <meta name="twitter:description" content={description} />
+  {heroImage && <meta name="twitter:image" content={heroImage} />}
+ 
+  <!-- Extra -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="SleepGuide.com.au" />
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
@@ -46,7 +75,7 @@ const category = categories?.[0] || 'Sleep Guide';
       line-height: 1.6;
     }
     a { text-decoration: none; color: inherit; }
-
+ 
     /* NAV */
     nav {
       background: var(--navy);
@@ -69,7 +98,7 @@ const category = categories?.[0] || 'Sleep Guide';
     .nav-links a { font-size: 0.85rem; color: rgba(250,248,243,0.7); transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
     @media (max-width: 640px) { .nav-links { display: none; } }
-
+ 
     /* HERO HEADER */
     .article-hero {
       background: var(--navy);
@@ -154,14 +183,28 @@ const category = categories?.[0] || 'Sleep Guide';
       width: 1px; height: 14px;
       background: rgba(250,248,243,0.15);
     }
-
+ 
+    /* HERO IMAGE */
+    .article-hero-img-wrap {
+      background: var(--navy);
+      overflow: hidden;
+      max-height: 480px;
+    }
+    .article-hero-img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.92;
+    }
+ 
     /* ARTICLE BODY */
     .article-wrap {
       max-width: 760px;
       margin: 0 auto;
       padding: 3rem 2rem 4rem;
     }
-
+ 
     /* CONTENT STYLES */
     .article-content {
       font-size: 1.05rem;
@@ -204,7 +247,7 @@ const category = categories?.[0] || 'Sleep Guide';
       transition: text-decoration-color 0.2s;
     }
     .article-content a:hover { text-decoration-color: var(--gold); }
-
+ 
     /* LISTS */
     .article-content ul, .article-content ol {
       margin: 0 0 1.4rem 0;
@@ -246,7 +289,7 @@ const category = categories?.[0] || 'Sleep Guide';
       align-items: center;
       justify-content: center;
     }
-
+ 
     /* BLOCKQUOTE */
     .article-content blockquote {
       border-left: 3px solid var(--gold);
@@ -262,7 +305,7 @@ const category = categories?.[0] || 'Sleep Guide';
       color: var(--navy);
       margin: 0;
     }
-
+ 
     /* TABLES */
     .article-content table {
       width: 100%;
@@ -290,7 +333,7 @@ const category = categories?.[0] || 'Sleep Guide';
     }
     .article-content tr:last-child td { border-bottom: none; }
     .article-content tr:nth-child(even) td { background: rgba(242,237,227,0.5); }
-
+ 
     /* IMAGES */
     .article-content img {
       max-width: 100%;
@@ -309,7 +352,7 @@ const category = categories?.[0] || 'Sleep Guide';
       margin-top: 0.6rem;
       font-style: italic;
     }
-
+ 
     /* CALLOUT BOX — for "Quick Answer" sections */
     .article-content h2:has(+ p) + p:first-of-type,
     .quick-answer {
@@ -318,7 +361,7 @@ const category = categories?.[0] || 'Sleep Guide';
       border-radius: 10px;
       padding: 1.2rem 1.4rem;
     }
-
+ 
     /* ARTICLE FOOTER */
     .article-footer {
       max-width: 760px;
@@ -350,7 +393,7 @@ const category = categories?.[0] || 'Sleep Guide';
       line-height: 1.6;
       font-weight: 300;
     }
-
+ 
     /* SITE FOOTER */
     footer {
       background: #111E33;
@@ -370,7 +413,7 @@ const category = categories?.[0] || 'Sleep Guide';
   </style>
 </head>
 <body>
-
+ 
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo">Sleep<span>Guide</span><span style="color:rgba(250,248,243,0.3);font-size:0.65rem;font-family:'DM Sans',sans-serif;font-weight:300;margin-left:3px">.com.au</span></a>
@@ -382,7 +425,7 @@ const category = categories?.[0] || 'Sleep Guide';
       <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
-
+ 
   <!-- ARTICLE HERO -->
   <header class="article-hero">
     <div class="hero-inner">
@@ -411,14 +454,21 @@ const category = categories?.[0] || 'Sleep Guide';
       </div>
     </div>
   </header>
-
+ 
+  <!-- HERO IMAGE -->
+  {heroImage && (
+    <div class="article-hero-img-wrap">
+      <img src={heroImage} alt={title} class="article-hero-img" loading="eager" />
+    </div>
+  )}
+ 
   <!-- ARTICLE CONTENT -->
   <main class="article-wrap">
     <article class="article-content">
       <slot />
     </article>
   </main>
-
+ 
   <!-- ARTICLE FOOTER -->
   <div class="article-footer">
     <div class="article-footer-inner">
@@ -428,10 +478,10 @@ const category = categories?.[0] || 'Sleep Guide';
       <p class="footer-disclaimer">Content on SleepGuide.com.au is for informational purposes only and does not constitute medical advice. Always consult a health professional for sleep-related concerns.</p>
     </div>
   </div>
-
+ 
   <!-- NEWSLETTER SIGNUP -->
   <!-- Add <NewsletterSignup /> here once component is set up -->
-
+ 
   <!-- SITE FOOTER -->
   <footer>
     <div class="footer-links">
@@ -442,6 +492,6 @@ const category = categories?.[0] || 'Sleep Guide';
     </div>
     <p class="footer-copy">© 2026 SleepGuide.com.au · Australia's trusted sleep resource</p>
   </footer>
-
+ 
 </body>
 </html>
