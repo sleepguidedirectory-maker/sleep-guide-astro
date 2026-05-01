@@ -1,11 +1,12 @@
 ---
-layout: ../../../layouts/BlogPost.astro
+---
+layout: ../../layouts/BlogPost.astro
 title: "How to Choose the Right Pillow: The Ultimate Guide to Stopping Neck Pain"
-image: "https://images.unsplash.com/photo-1549673998-6f68bbcf92f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5Mzk4NTJ8MHwxfGFsbHx8fHx8fHx8fDE3Nzc2MTQwNTB8&ixlib=rb-4.1.0&q=80&w=1080"
-categories: 
-  - "pillows"
-pubDate: "2025-12-15"
+image: "https://images.unsplash.com/photo-1549673998-6f68bbcf92f6?q=80&w=1080"
+categories: pillows
+pubDate: 2025-12-15
 description: "The ultimate guide to choosing the right pillow and stopping neck pain."
+---
 ---
 
 ###### We spend a third of our lives in bed, yet most of us spend more time choosing a coffee order than we do choosing the surface we rest our heads on every night.
