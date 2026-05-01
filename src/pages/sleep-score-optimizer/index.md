@@ -1,80 +1,469 @@
-<!-- Sleep Score Calculator Widget -->
-<div id="sleep-calculator-container" style="max-width: 400px; margin: 20px auto; padding: 20px; border-radius: 15px; background: #f9f9fb; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: sans-serif; color: #333;">
-    <h2 style="text-align: center; color: #2c3e50; margin-top: 0;">Sleep Score Calculator</h2>
-    
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Hours Slept:</label>
-        <input type="number" id="hoursSlept" step="0.1" placeholder="e.g. 7.5" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Minutes to fall asleep:</label>
-        <input type="number" id="latency" placeholder="e.g. 20" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
-    </div>
-
-    <div style="margin-bottom: 20px;">
-        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Times woken up:</label>
-        <input type="number" id="awakenings" placeholder="e.g. 1" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;">
-    </div>
-
-    <button onclick="calculateSleepScore()" style="width: 100%; padding: 12px; background-color: #4a90e2; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: background 0.3s;">
-        Calculate My Score
-    </button>
-
-    <div id="sleepResult" style="margin-top: 20px; text-align: center; display: none;">
-        <div style="font-size: 14px; color: #666;">Your Sleep Score</div>
-        <div id="scoreDisplay" style="font-size: 48px; font-weight: bold; color: #4a90e2;">0</div>
-        <p id="scoreMessage" style="font-weight: bold; margin-top: 5px;"></p>
-    </div>
-</div>
-
-<script>
-function calculateSleepScore() {
-    const hours = parseFloat(document.getElementById('hoursSlept').value);
-    const latency = parseInt(document.getElementById('latency').value);
-    const awake = parseInt(document.getElementById('awakenings').value);
-
-    if (isNaN(hours) || isNaN(latency) || isNaN(awake)) {
-        alert("Please fill in all fields.");
-        return;
-    }
-
-    // 1. Duration Score (Max 50)
-    let durationPoints = 0;
-    if (hours >= 7 && hours <= 9) {
-        durationPoints = 50;
-    } else {
-        let diff = Math.min(Math.abs(7 - hours), Math.abs(9 - hours));
-        durationPoints = Math.max(0, 50 - (diff * 12));
-    }
-
-    // 2. Latency Score (Max 25)
-    let latencyPoints = 5;
-    if (latency <= 20) latencyPoints = 25;
-    else if (latency <= 45) latencyPoints = 15;
-
-    // 3. Efficiency Score (Max 25)
-    let efficiencyPoints = Math.max(0, 25 - (awake * 7));
-
-    const totalScore = Math.round(durationPoints + latencyPoints + efficiencyPoints);
-
-    // Display Logic
-    const resultDiv = document.getElementById('sleepResult');
-    const scoreDisplay = document.getElementById('scoreDisplay');
-    const message = document.getElementById('scoreMessage');
-
-    resultDiv.style.display = 'block';
-    scoreDisplay.innerText = totalScore;
-
-    if (totalScore >= 85) {
-        message.innerText = "Excellent Rest!";
-        message.style.color = "#27ae60";
-    } else if (totalScore >= 70) {
-        message.innerText = "Good Quality.";
-        message.style.color = "#f39c12";
-    } else {
-        message.innerText = "Needs Improvement.";
-        message.style.color = "#e74c3c";
-    }
+---
+interface Props {
+  title: string;
+  pubDate: string;
+  description: string;
+  categories?: string[];
+  heroImage?: string;
 }
-</script>
+const { title, pubDate, description, categories, heroImage } = Astro.props;
+
+// Format date nicely
+const formattedDate = new Date(pubDate).toLocaleDateString('en-AU', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Estimate read time (will show 5 min as default since we can't count words server-side easily)
+const category = categories?.[0] || 'Sleep Guide';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | SleepGuide.com.au</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B2B4B;
+      --gold: #C49A45;
+      --cream: #FAF8F3;
+      --warm-bg: #F2EDE3;
+      --muted: #6B7B8A;
+      --white: #ffffff;
+      --border: rgba(27,43,75,0.1);
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      font-weight: 600;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; color: rgba(250,248,243,0.7); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* HERO HEADER */
+    .article-hero {
+      background: var(--navy);
+      padding: 3.5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(196,154,69,0.07);
+    }
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .article-breadcrumb a {
+      font-size: 0.78rem;
+      color: rgba(250,248,243,0.5);
+      transition: color 0.2s;
+    }
+    .article-breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb-sep { font-size: 0.78rem; color: rgba(250,248,243,0.25); }
+    .article-category {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196,154,69,0.35);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+    .article-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .article-description {
+      font-size: 1.05rem;
+      color: rgba(250,248,243,0.65);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 1.8rem;
+      max-width: 600px;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: rgba(250,248,243,0.5);
+    }
+    .meta-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(196,154,69,0.5);
+    }
+    .meta-divider {
+      width: 1px; height: 14px;
+      background: rgba(250,248,243,0.15);
+    }
+
+    /* HERO IMAGE */
+    .article-hero-img-wrap {
+      background: var(--navy);
+      overflow: hidden;
+      max-height: 480px;
+    }
+    .article-hero-img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.92;
+    }
+
+    /* ARTICLE BODY */
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    /* CONTENT STYLES */
+    .article-content {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #2A3A52;
+    }
+    .article-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin: 2.5rem 0 1rem;
+      line-height: 1.3;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--warm-bg);
+    }
+    .article-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 2rem 0 0.7rem;
+    }
+    .article-content h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .article-content p {
+      margin-bottom: 1.4rem;
+    }
+    .article-content strong { font-weight: 500; color: var(--navy); }
+    .article-content em { font-style: italic; }
+    .article-content a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-decoration-color: rgba(196,154,69,0.4);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+    .article-content a:hover { text-decoration-color: var(--gold); }
+
+    /* LISTS */
+    .article-content ul, .article-content ol {
+      margin: 0 0 1.4rem 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .article-content ul li {
+      padding: 0.35rem 0 0.35rem 1.6rem;
+      position: relative;
+      color: #2A3A52;
+    }
+    .article-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.75rem;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+    .article-content ol { counter-reset: ol-counter; }
+    .article-content ol li {
+      padding: 0.35rem 0 0.35rem 2rem;
+      position: relative;
+      counter-increment: ol-counter;
+      color: #2A3A52;
+    }
+    .article-content ol li::before {
+      content: counter(ol-counter);
+      position: absolute;
+      left: 0; top: 0.3rem;
+      width: 22px; height: 22px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* BLOCKQUOTE */
+    .article-content blockquote {
+      border-left: 3px solid var(--gold);
+      background: rgba(196,154,69,0.06);
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .article-content blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin: 0;
+    }
+
+    /* TABLES */
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .article-content th {
+      background: var(--navy);
+      color: var(--cream);
+      padding: 0.9rem 1rem;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.3px;
+    }
+    .article-content td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: #2A3A52;
+    }
+    .article-content tr:last-child td { border-bottom: none; }
+    .article-content tr:nth-child(even) td { background: rgba(242,237,227,0.5); }
+
+    /* IMAGES */
+    .article-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+    .article-content figure {
+      margin: 2rem 0;
+    }
+    .article-content figcaption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    /* CALLOUT BOX — for "Quick Answer" sections */
+    .article-content h2:has(+ p) + p:first-of-type,
+    .quick-answer {
+      background: rgba(196,154,69,0.08);
+      border: 1px solid rgba(196,154,69,0.2);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    /* ARTICLE FOOTER */
+    .article-footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+    .article-footer-inner {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-back a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-back a:hover { color: var(--gold); }
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 400px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* SITE FOOTER */
+    footer {
+      background: #111E33;
+      padding: 2rem;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+    .footer-links a { font-size: 0.78rem; color: rgba(250,248,243,0.45); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.72rem; color: rgba(250,248,243,0.2); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Sleep<span>Guide</span><span style="color:rgba(250,248,243,0.3);font-size:0.65rem;font-family:'DM Sans',sans-serif;font-weight:300;margin-left:3px">.com.au</span></a>
+    <ul class="nav-links">
+      <li><a href="/best-mattress-in-australia-2026">Mattresses</a></li>
+      <li><a href="/blog/best-anti-snore-pillow-australia">Pillows</a></li>
+      <li><a href="/sleep-score-optimizer">Sleep Quiz</a></li>
+      <li><a href="/about-us">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HERO -->
+  <header class="article-hero">
+    <div class="hero-inner">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/">Guides</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color:rgba(250,248,243,0.4);font-size:0.78rem">{title}</span>
+      </nav>
+      <div class="article-category">{category}</div>
+      <h1>{title}</h1>
+      {description && <p class="article-description">{description}</p>}
+      <div class="article-meta">
+        <div class="meta-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          {formattedDate}
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          8–12 min read
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">🇦🇺 Australian guide</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO IMAGE -->
+  {heroImage && (
+    <div class="article-hero-img-wrap">
+      <img src={heroImage} alt={title} class="article-hero-img" loading="eager" />
+    </div>
+  )}
+
+  <!-- ARTICLE CONTENT -->
+  <main class="article-wrap">
+    <article class="article-content">
+      <slot />
+    </article>
+  </main>
+
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer">
+    <div class="article-footer-inner">
+      <div class="footer-back">
+        <a href="/">← Back to all guides</a>
+      </div>
+      <p class="footer-disclaimer">Content on SleepGuide.com.au is for informational purposes only and does not constitute medical advice. Always consult a health professional for sleep-related concerns.</p>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER SIGNUP -->
+  <!-- Add <NewsletterSignup /> here once component is set up -->
+
+  <!-- SITE FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/about-us">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms-of-service">Terms</a>
+    </div>
+    <p class="footer-copy">© 2026 SleepGuide.com.au · Australia's trusted sleep resource</p>
+  </footer>
+
+</body>
+</html>
