@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/BlogPost.astro
 title: "How to Choose the Right Pillow: The Ultimate Guide to Stopping Neck Pain"
-src="images.unsplash.com//photos/a-person-lying-in-a-bed-tgMKcE-Qo5o" 
+<img src="https://images.unsplash.com/photo-1549673998-6f68bbcf92f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5Mzk4NTJ8MHwxfGFsbHx8fHx8fHx8fDE3Nzc2MTQwNTB8&ixlib=rb-4.1.0&q=80&w=1080" alt="A person lying in a bed">
 categories: 
   - "pillows"
 pubDate: "2025-12-15"
