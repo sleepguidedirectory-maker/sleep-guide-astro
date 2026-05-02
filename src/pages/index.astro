@@ -1,438 +1,650 @@
 ---
+// SleepGuide.com.au Homepage
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Sleep Guides | SleepGuide.com.au</title>
-  <meta name="description" content="Browse all of SleepGuide's expert mattress and pillow reviews, buying guides and sleep science articles for Australians." />
-  <link rel="canonical" href="https://www.sleepguide.com.au/blog/" />
+  <title>SleepGuide.com.au — Australia's Trusted Sleep Resource</title>
+  <meta name="description" content="Expert mattress and pillow reviews, honest comparisons and trusted sleep guides for Australians. Find your perfect night's sleep in 2026." />
+  <link rel="canonical" href="https://www.sleepguide.com.au/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SleepGuide.com.au — Australia's Trusted Sleep Resource" />
+  <meta property="og:description" content="Expert mattress and pillow reviews, honest comparisons and trusted sleep guides for Australians. Find your perfect night's sleep in 2026." />
+  <meta property="og:url" content="https://www.sleepguide.com.au/" />
+  <meta property="og:site_name" content="SleepGuide.com.au" />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1631157769375-6df2ced3e0d9?w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SleepGuide.com.au — Australia's Trusted Sleep Resource" />
+  <meta name="twitter:description" content="Expert mattress and pillow reviews, honest comparisons and trusted sleep guides for Australians." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1631157769375-6df2ced3e0d9?w=1200&q=80" />
+  <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --navy: #1B2B4B; --gold: #C49A45; --cream: #FAF8F3;
-      --warm: #F2EDE3; --muted: #6B7B8A; --white: #fff;
-      --border: rgba(27,43,75,0.09);
+      --navy: #1B2B4B;
+      --gold: #C49A45;
+      --cream: #FAF8F3;
+      --warm-bg: #F2EDE3;
+      --muted: #6B7B8A;
+      --text: #1B2B4B;
+      --white: #ffffff;
     }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
     a { text-decoration: none; color: inherit; }
 
     /* NAV */
-    nav { background: var(--navy); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--cream); font-weight: 600; }
+    nav {
+      background: var(--navy);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--cream);
+      font-weight: 600;
+    }
     .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; color: rgba(250,248,243,0.7); transition: color 0.2s; }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: rgba(250,248,243,0.75);
+      font-weight: 400;
+      transition: color 0.2s;
+    }
     .nav-links a:hover { color: var(--gold); }
-    @media (max-width: 640px) { .nav-links { display: none; } }
 
     /* HERO */
-    .page-hero { background: var(--navy); padding: 3rem 2rem; position: relative; overflow: hidden; }
-    .page-hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(196,154,69,0.07); }
-    .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
-    .hero-tag { display: inline-block; font-size: 0.67rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,69,0.35); padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem; }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 0.8rem; }
-    .page-hero p { font-size: 0.95rem; color: rgba(250,248,243,0.6); font-weight: 300; max-width: 480px; line-height: 1.75; }
+    .hero {
+      background: var(--navy);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(196,154,69,0.07);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(196,154,69,0.05);
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196,154,69,0.4);
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.2;
+      max-width: 620px;
+      margin: 0 auto 1.2rem;
+    }
+    .hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(250,248,243,0.65);
+      font-weight: 300;
+      max-width: 460px;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      border: 1px solid rgba(250,248,243,0.3);
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(250,248,243,0.6); }
 
-    /* MAIN */
-    .main-wrap { max-width: 820px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--warm-bg);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(27,43,75,0.08);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .trust-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
 
-    /* SEARCH */
-    .search-bar { margin-bottom: 2.5rem; position: relative; }
-    .search-bar input { width: 100%; background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 16px 12px 42px; font-size: 0.92rem; color: var(--navy); font-family: inherit; outline: none; transition: border-color 0.2s; }
-    .search-bar input:focus { border-color: var(--gold); }
-    .search-bar input::placeholder { color: var(--muted); }
-    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
-    #no-results { display: none; text-align: center; padding: 2rem; color: var(--muted); font-size: 0.9rem; }
+    /* SECTIONS */
+    .section {
+      padding: 3.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 480px;
+      line-height: 1.7;
+    }
 
-    /* CATEGORY GROUPS */
-    .category-group { margin-bottom: 2.5rem; }
-    .category-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--warm); }
-    .cat-icon { font-size: 1.2rem; }
-    .cat-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); }
-    .cat-count { font-size: 0.72rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); background: rgba(196,154,69,0.1); padding: 3px 10px; border-radius: 12px; margin-left: auto; }
+    /* CATEGORIES */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .cat-card {
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(27,43,75,0.15);
+    }
+    .cat-mattress { background: var(--navy); }
+    .cat-pillow { background: #2D4A3E; }
+    .cat-back { background: #3D2B1F; }
+    .cat-science { background: #3A2A45; }
+    .cat-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .cat-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .cat-card p {
+      font-size: 0.8rem;
+      color: rgba(250,248,243,0.55);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+    .cat-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      background: rgba(196,154,69,0.2);
+      color: var(--gold);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
 
-    /* ACCORDION */
-    .accordion { display: flex; flex-direction: column; gap: 8px; }
-    .acc-item { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s; }
-    .acc-item:hover { border-color: rgba(196,154,69,0.3); box-shadow: 0 2px 12px rgba(27,43,75,0.06); }
-    .acc-item.open { border-color: rgba(196,154,69,0.5); box-shadow: 0 4px 20px rgba(27,43,75,0.08); }
+    /* FEATURED ARTICLE */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 640px) {
+      .featured-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .article-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(27,43,75,0.08);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .article-card:hover {
+      box-shadow: 0 8px 28px rgba(27,43,75,0.1);
+      transform: translateY(-2px);
+    }
+    .article-card.featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 640px) {
+      .article-card.featured {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+      }
+    }
+    .article-img {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .article-card.featured .article-img { height: 100%; min-height: 200px; }
+    .img-mattress { background: linear-gradient(135deg, #E8EAF2, #C8CEDF); }
+    .img-pillow { background: linear-gradient(135deg, #E8F0E8, #C8DFC8); }
+    .img-koala { background: linear-gradient(135deg, #EDE8F0, #D5C8DF); }
+    .img-pregnancy { background: linear-gradient(135deg, #F0EBE8, #DFD0C8); }
+    .img-back { background: linear-gradient(135deg, #EAF0E8, #D0E0CC); }
+    .img-latex { background: linear-gradient(135deg, #F0EDE8, #E0D5C0); }
+    .img-snore { background: linear-gradient(135deg, #E8ECF0, #C8D2E0); }
+    .img-contour { background: linear-gradient(135deg, #E8F0EC, #C8DFD4); }
+    .img-weighted { background: linear-gradient(135deg, #EDE8F0, #D4C8DF); }
+    .article-body { padding: 1.2rem 1.3rem; }
+    .article-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .article-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .article-card.featured h3 { font-size: 1.3rem; }
+    .article-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 0.8rem;
+    }
+    .article-meta {
+      font-size: 0.72rem;
+      color: #9BA8B4;
+      font-weight: 300;
+    }
+    .read-more {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: 0.8rem;
+    }
+    .read-more::after { content: ' →'; }
 
-    .acc-trigger { width: 100%; display: flex; align-items: center; gap: 14px; padding: 1.1rem 1.3rem; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; }
-    .acc-trigger:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-    .acc-num { min-width: 28px; height: 28px; border-radius: 50%; background: var(--warm); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; color: var(--muted); flex-shrink: 0; transition: background 0.2s, color 0.2s; }
-    .acc-item.open .acc-num { background: var(--navy); color: var(--gold); }
-    .acc-title { flex: 1; font-size: 0.98rem; font-weight: 500; color: var(--navy); line-height: 1.4; }
-    .acc-item.open .acc-title { color: var(--navy); font-weight: 600; }
-    .acc-arrow { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--warm); display: flex; align-items: center; justify-content: center; transition: transform 0.3s, background 0.2s; }
-    .acc-item.open .acc-arrow { transform: rotate(180deg); background: rgba(196,154,69,0.15); }
-    .acc-arrow svg { width: 10px; height: 10px; stroke: var(--muted); stroke-width: 2.5; fill: none; }
-
-    /* PANEL */
-    .acc-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
-    .acc-item.open .acc-panel { max-height: 600px; }
-    .acc-panel-inner { padding: 0 1.3rem 1.3rem; display: grid; grid-template-columns: 180px 1fr; gap: 1.2rem; align-items: start; }
-    @media (max-width: 560px) { .acc-panel-inner { grid-template-columns: 1fr; } }
-    .acc-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
-    .acc-img-placeholder { width: 100%; aspect-ratio: 16/9; border-radius: 8px; background: var(--warm); display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 1px solid var(--border); }
-    .acc-meta { display: flex; flex-direction: column; gap: 0.6rem; }
-    .acc-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
-    .acc-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
-    .acc-info { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .acc-info span { font-size: 0.72rem; color: #9BA8B4; display: flex; align-items: center; gap: 4px; }
-    .acc-read-btn { display: inline-flex; align-items: center; gap: 7px; background: var(--gold); color: var(--navy); padding: 9px 18px; border-radius: 7px; font-size: 0.84rem; font-weight: 600; font-family: inherit; transition: opacity 0.2s; margin-top: 0.4rem; align-self: flex-start; }
-    .acc-read-btn:hover { opacity: 0.88; }
+    /* SLEEP SCORE SECTION */
+    .score-section {
+      background: var(--navy);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .score-section .section-label { color: var(--gold); }
+    .score-section .section-title { color: var(--cream); margin: 0 auto 0.5rem; }
+    .score-section .section-sub {
+      color: rgba(250,248,243,0.6);
+      max-width: 420px;
+      margin: 0 auto 1.5rem;
+    }
+    .score-steps {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .score-step {
+      text-align: center;
+      max-width: 130px;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(196,154,69,0.2);
+      border: 1px solid rgba(196,154,69,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin: 0 auto 0.6rem;
+    }
+    .score-step p {
+      font-size: 0.78rem;
+      color: rgba(250,248,243,0.55);
+      font-weight: 300;
+      line-height: 1.5;
+    }
 
     /* FOOTER */
-    footer { background: #111E33; padding: 2rem; text-align: center; }
-    .footer-links { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
-    .footer-links a { font-size: 0.78rem; color: rgba(250,248,243,0.4); }
+    footer {
+      background: #111E33;
+      padding: 2.5rem 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: rgba(250,248,243,0.4);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(250,248,243,0.5);
+      transition: color 0.2s;
+    }
     .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 0.72rem; color: rgba(250,248,243,0.18); }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(250,248,243,0.25);
+      border-top: 1px solid rgba(250,248,243,0.08);
+      padding-top: 1rem;
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">Sleep<span>Guide</span><span style="color:rgba(250,248,243,0.28);font-size:0.62rem;font-family:'DM Sans',sans-serif;font-weight:300;margin-left:3px">.com.au</span></a>
-  <ul class="nav-links">
-    <li><a href="/best-mattress-in-australia-2026/">Mattresses</a></li>
-    <li><a href="/blog/">All Guides</a></li>
-    <li><a href="/sleep-score-optimizer/">Sleep Quiz</a></li>
-    <li><a href="/about-us/">About</a></li>
-    <li><a href="/contact/">Contact</a></li>
-  </ul>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Sleep<span>Guide</span><span style="color:rgba(250,248,243,0.4);font-size:0.7rem;font-family:'DM Sans',sans-serif;font-weight:300;margin-left:4px">.com.au</span></div>
+    <ul class="nav-links">
+      <li><a href="/best-mattress-in-australia-2026/">Mattresses</a></li>
+      <li><a href="/blog/best-anti-snore-pillow-australia/">Pillows</a></li>
+      <li><a href="/sleep-score-optimizer/">Sleep Quiz</a></li>
+      <li><a href="/about-us/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
 
-<div class="page-hero">
-  <div class="hero-inner">
-    <div class="hero-tag">All guides · Updated 2026</div>
-    <h1>Expert Sleep Guides</h1>
-    <p>Browse all our Australian mattress reviews, pillow comparisons and sleep science guides. Click any title to preview, then read the full guide.</p>
-  </div>
-</div>
-
-<div class="main-wrap">
-
-  <!-- SEARCH -->
-  <div class="search-bar">
-    <span class="search-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    </span>
-    <input type="text" id="search-input" placeholder="Search guides e.g. mattress, pillow, back pain…" autocomplete="off" />
-  </div>
-  <div id="no-results">No guides match your search. Try a different keyword.</div>
-
-  <!-- MATTRESSES -->
-  <div class="category-group" data-category="mattresses">
-    <div class="category-header">
-      <span class="cat-icon">🛏</span>
-      <span class="cat-name">Mattresses</span>
-      <span class="cat-count">3 guides</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Australia's Sleep Authority · Updated 2026</div>
+    <h1>Find Your <em>Perfect</em><br/>Night's Sleep</h1>
+    <p class="hero-sub">Expert mattress and pillow reviews, honest comparisons and science-backed sleep guides — written for Australians.</p>
+    <div class="hero-btns">
+      <a href="/best-mattress-in-australia-2026/" class="btn-gold">Browse Mattress Reviews</a>
+      <a href="/sleep-score-optimizer/" class="btn-outline">Take the Sleep Quiz</a>
     </div>
-    <div class="accordion">
+  </section>
 
-      <div class="acc-item" data-title="Best Mattresses in Australia 2026">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">1</span>
-          <span class="acc-title">Best Mattresses in Australia 2026 — The Complete Guide</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <img class="acc-img" src="https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&dpr=1" alt="Best Mattresses Australia 2026" loading="lazy" />
-            <div class="acc-meta">
-              <div class="acc-tag">Mattresses · Editor's Pick</div>
-              <p class="acc-desc">We tested and compared the top-selling mattresses in Australia across memory foam, latex and hybrid categories to help you find the right one for your sleep style and budget.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 15 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/best-mattress-in-australia-2026/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-dot"></div>Australian-focused reviews</div>
+    <div class="trust-item"><div class="trust-dot"></div>Independently researched</div>
+    <div class="trust-item"><div class="trust-dot"></div>Updated for 2026</div>
+    <div class="trust-item"><div class="trust-dot"></div>No paid placements</div>
+  </div>
 
-      <div class="acc-item" data-title="Koala Mattress Review 2026">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">2</span>
-          <span class="acc-title">Koala Mattress Review 2026 — Is It Still Worth It?</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <img class="acc-img" src="https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&dpr=1" alt="Koala Mattress Review" loading="lazy" />
-            <div class="acc-meta">
-              <div class="acc-tag">Review</div>
-              <p class="acc-desc">Australia's most popular mattress put to the test. We cover comfort, support, durability, value and how it compares to rivals like Emma and Sleeping Duck.</p>
-              <div class="acc-info">
-                <span>📅 February 2026</span>
-                <span>⏱ 8 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/koala-mattress-review-2026/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item" data-title="Best Mattress for Back Pain Australia 2026">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">3</span>
-          <span class="acc-title">Best Mattress for Back Pain Australia 2026</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <img class="acc-img" src="https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&dpr=1" alt="Best Mattress for Back Pain" loading="lazy" />
-            <div class="acc-meta">
-              <div class="acc-tag">Back Pain</div>
-              <p class="acc-desc">Physio-approved picks for Australians with lower back, hip or joint pain. We break down firmness levels, support zones and which mattress types work best for different conditions.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 11 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/best-mattress-for-back-pain-australia-2026/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <!-- CATEGORIES -->
+  <div class="section">
+    <div class="section-label">Browse by category</div>
+    <div class="section-title">What are you shopping for?</div>
+    <div class="section-sub">Find expert guidance tailored to exactly what you need</div>
+    <div class="cat-grid">
+      <a href="/best-mattress-in-australia-2026/" class="cat-card cat-mattress">
+        <span class="cat-icon">🛏</span>
+        <h3>Mattresses</h3>
+        <p>Memory foam, latex & hybrid reviews for every budget</p>
+        <span class="cat-badge">6 guides</span>
+      </a>
+      <a href="/blog/best-anti-snore-pillow-australia/" class="cat-card cat-pillow">
+        <span class="cat-icon">💤</span>
+        <h3>Pillows</h3>
+        <p>Anti-snore, contour, latex & pregnancy pillows</p>
+        <span class="cat-badge">5 guides</span>
+      </a>
+      <a href="/blog/best-mattress-for-back-pain-australia-2026/" class="cat-card cat-back">
+        <span class="cat-icon">🩺</span>
+        <h3>Back Pain</h3>
+        <p>Specialist picks for back and joint relief</p>
+        <span class="cat-badge">2 guides</span>
+      </a>
+      <a href="/blog/the-science-of-weighted-blankets/" class="cat-card cat-science">
+        <span class="cat-icon">✦</span>
+        <h3>Sleep Science</h3>
+        <p>Evidence-based sleep improvement guides</p>
+        <span class="cat-badge">3 guides</span>
+      </a>
     </div>
   </div>
 
-  <!-- PILLOWS -->
-  <div class="category-group" data-category="pillows">
-    <div class="category-header">
-      <span class="cat-icon">💤</span>
-      <span class="cat-name">Pillows</span>
-      <span class="cat-count">5 guides</span>
-    </div>
-    <div class="accordion">
+  <!-- ARTICLES -->
+  <div class="section" style="padding-top:0">
+    <div class="section-label">Latest guides</div>
+    <div class="section-title">2026 Expert Reviews</div>
+    <div class="section-sub">Honest, in-depth and updated for Australian shoppers</div>
+    <div class="featured-grid">
 
-      <div class="acc-item" data-title="Best Anti-Snore Pillow Australia">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">1</span>
-          <span class="acc-title">Best Anti-Snore Pillows Australia — Top 7 Picks</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <img class="acc-img" src="https://images.pexels.com/photos/7623551/pexels-photo-7623551.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&dpr=1" alt="Best Anti-Snore Pillow Australia" loading="lazy" />
-            <div class="acc-meta">
-              <div class="acc-tag">Pillows</div>
-              <p class="acc-desc">Seven top-rated anti-snore pillows available in Australia reviewed and ranked. Covers ergonomic design, sleeping positions, materials and value for money.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 10 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/best-anti-snore-pillow-australia/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
+      <a href="/best-mattress-in-australia-2026/" class="article-card featured">
+        <div class="article-img img-mattress">🛏</div>
+        <div class="article-body" style="display:flex;flex-direction:column;justify-content:center">
+          <div class="article-tag">Mattresses · Editor's Pick</div>
+          <h3>Best Mattresses in Australia 2026 — The Complete Guide</h3>
+          <p class="article-desc">We tested and compared the top-selling mattresses available in Australia across memory foam, latex and hybrid categories to help you find the right one for your sleep style and budget.</p>
+          <div class="article-meta">Updated January 2026 · 15 min read</div>
+          <span class="read-more">Read the guide</span>
         </div>
-      </div>
+      </a>
 
-      <div class="acc-item" data-title="Best Contour Pillow Australia 2026">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">2</span>
-          <span class="acc-title">Best Contour Pillow Australia 2026</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <div class="acc-img-placeholder">💆</div>
-            <div class="acc-meta">
-              <div class="acc-tag">Pillows</div>
-              <p class="acc-desc">Ergonomic contour pillows designed to support the natural curve of your neck and spine. Expert picks for neck pain, side sleepers and back sleepers.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 8 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/best-contour-pillow-australia-2026/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
+      <a href="/blog/koala-mattress-review-2026/" class="article-card">
+        <div class="article-img img-koala">⭐</div>
+        <div class="article-body">
+          <div class="article-tag">Review</div>
+          <h3>Koala Mattress Review 2026</h3>
+          <p class="article-desc">Is Australia's most popular mattress still worth it?</p>
+          <div class="article-meta">Updated Feb 2026 · 8 min read</div>
+          <span class="read-more">Read review</span>
         </div>
-      </div>
+      </a>
 
-      <div class="acc-item" data-title="Best Latex Pillow Australia 2026">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">3</span>
-          <span class="acc-title">Best Latex Pillow Australia 2026</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <div class="acc-img-placeholder">🌿</div>
-            <div class="acc-meta">
-              <div class="acc-tag">Pillows</div>
-              <p class="acc-desc">Natural latex pillows are durable, breathable and hypoallergenic. We compare the best options available in Australia for side, back and combination sleepers.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 9 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/best-latex-pillow-australia-2026/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
+      <a href="/blog/best-mattress-for-back-pain-australia-2026/" class="article-card">
+        <div class="article-img img-back">🩺</div>
+        <div class="article-body">
+          <div class="article-tag">Back Pain</div>
+          <h3>Best Mattress for Back Pain Australia 2026</h3>
+          <p class="article-desc">Physio-approved picks for spinal support</p>
+          <div class="article-meta">Updated Jan 2026 · 11 min read</div>
+          <span class="read-more">Read the guide</span>
         </div>
-      </div>
+      </a>
 
-      <div class="acc-item" data-title="Best Pregnancy Pillow Australia 2026">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">4</span>
-          <span class="acc-title">Best Pregnancy Pillow Australia 2026</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <div class="acc-img-placeholder">🤰</div>
-            <div class="acc-meta">
-              <div class="acc-tag">Pillows</div>
-              <p class="acc-desc">Full body, wedge and C-shaped pregnancy pillows reviewed for Australian mums. Covers support for every trimester and post-partum recovery.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 9 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/best-pregnancy-pillow-australia-2026/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
+      <a href="/blog/best-anti-snore-pillow-australia/" class="article-card">
+        <div class="article-img img-snore">😴</div>
+        <div class="article-body">
+          <div class="article-tag">Pillows</div>
+          <h3>Best Anti-Snore Pillows Australia</h3>
+          <p class="article-desc">7 top picks to help you (and your partner) sleep peacefully</p>
+          <div class="article-meta">Updated Jan 2026 · 10 min read</div>
+          <span class="read-more">Read the guide</span>
         </div>
-      </div>
+      </a>
 
-      <div class="acc-item" data-title="How to Choose the Right Pillow">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">5</span>
-          <span class="acc-title">How to Choose the Right Pillow — Ultimate Guide</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <img class="acc-img" src="https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&dpr=1" alt="How to Choose the Right Pillow" loading="lazy" />
-            <div class="acc-meta">
-              <div class="acc-tag">Pillows · Guide</div>
-              <p class="acc-desc">Everything you need to know about pillow loft, fill, firmness and sleeping position. Stop waking up with neck pain — find the right pillow the first time.</p>
-              <div class="acc-info">
-                <span>📅 December 2025</span>
-                <span>⏱ 10 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/how-to-choose-the-right-pillow/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
+      <a href="/blog/best-latex-pillow-australia-2026/" class="article-card">
+        <div class="article-img img-latex">🌿</div>
+        <div class="article-body">
+          <div class="article-tag">Pillows</div>
+          <h3>Best Latex Pillow Australia 2026</h3>
+          <p class="article-desc">Natural, durable and cool — the best latex pillows reviewed</p>
+          <div class="article-meta">Updated Jan 2026 · 9 min read</div>
+          <span class="read-more">Read the guide</span>
         </div>
-      </div>
+      </a>
+
+      <a href="/blog/best-pregnancy-pillow-australia-2026/" class="article-card">
+        <div class="article-img img-pregnancy">🤰</div>
+        <div class="article-body">
+          <div class="article-tag">Pillows</div>
+          <h3>Best Pregnancy Pillow Australia 2026</h3>
+          <p class="article-desc">Comfort and support for every trimester</p>
+          <div class="article-meta">Updated Jan 2026 · 9 min read</div>
+          <span class="read-more">Read the guide</span>
+        </div>
+      </a>
+
+      <a href="/blog/best-contour-pillow-australia-2026/" class="article-card">
+        <div class="article-img img-contour">💆</div>
+        <div class="article-body">
+          <div class="article-tag">Pillows</div>
+          <h3>Best Contour Pillow Australia 2026</h3>
+          <p class="article-desc">Ergonomic support for neck pain and better alignment</p>
+          <div class="article-meta">Updated Jan 2026 · 8 min read</div>
+          <span class="read-more">Read the guide</span>
+        </div>
+      </a>
+
+      <a href="/blog/the-science-of-weighted-blankets/" class="article-card">
+        <div class="article-img img-weighted">🧠</div>
+        <div class="article-body">
+          <div class="article-tag">Sleep Science</div>
+          <h3>The Science of Weighted Blankets</h3>
+          <p class="article-desc">What the research actually says about better sleep</p>
+          <div class="article-meta">Updated Jan 2026 · 7 min read</div>
+          <span class="read-more">Read the guide</span>
+        </div>
+      </a>
 
     </div>
   </div>
 
-  <!-- SLEEP SCIENCE -->
-  <div class="category-group" data-category="sleep science">
-    <div class="category-header">
-      <span class="cat-icon">🧠</span>
-      <span class="cat-name">Sleep Science</span>
-      <span class="cat-count">1 guide</span>
-    </div>
-    <div class="accordion">
-
-      <div class="acc-item" data-title="The Science of Weighted Blankets">
-        <button class="acc-trigger" aria-expanded="false">
-          <span class="acc-num">1</span>
-          <span class="acc-title">The Science of Weighted Blankets — What the Research Says</span>
-          <span class="acc-arrow"><svg viewBox="0 0 10 6"><polyline points="1 1 5 5 9 1"/></svg></span>
-        </button>
-        <div class="acc-panel">
-          <div class="acc-panel-inner">
-            <div class="acc-img-placeholder">🧠</div>
-            <div class="acc-meta">
-              <div class="acc-tag">Sleep Science</div>
-              <p class="acc-desc">A deep dive into the evidence behind weighted blankets — what the clinical research actually says about anxiety, insomnia and deep pressure stimulation.</p>
-              <div class="acc-info">
-                <span>📅 January 2026</span>
-                <span>⏱ 7 min read</span>
-                <span>🇦🇺 AU guide</span>
-              </div>
-              <a href="/blog/the-science-of-weighted-blankets/" class="acc-read-btn">Read full guide →</a>
-            </div>
-          </div>
-        </div>
+  <!-- SLEEP SCORE CTA -->
+  <section class="score-section">
+    <div class="section-label">Free personalised tool</div>
+    <div class="section-title">Not sure where to start?</div>
+    <p class="section-sub">Answer 5 quick questions about how you sleep and get a personalised recommendation in under 2 minutes.</p>
+    <div class="score-steps">
+      <div class="score-step">
+        <div class="step-num">1</div>
+        <p>Tell us your sleep style & concerns</p>
       </div>
-
+      <div class="score-step">
+        <div class="step-num">2</div>
+        <p>We match you to the right products</p>
+      </div>
+      <div class="score-step">
+        <div class="step-num">3</div>
+        <p>Get your personalised sleep score</p>
+      </div>
     </div>
-  </div>
+    <a href="/sleep-score-optimizer/" class="btn-gold">Get My Sleep Score →</a>
+  </section>
 
-</div>
-
-<footer>
-  <div class="footer-links">
-    <a href="/about-us/">About</a>
-    <a href="/contact/">Contact</a>
-    <a href="/privacy-policy/">Privacy Policy</a>
-    <a href="/terms-of-service/">Terms</a>
-  </div>
-  <p class="footer-copy">© 2026 SleepGuide.com.au · Australia's trusted sleep resource</p>
-</footer>
-
-<script>
-  // Accordion
-  document.querySelectorAll('.acc-trigger').forEach(function(trigger) {
-    trigger.addEventListener('click', function() {
-      var item = this.closest('.acc-item');
-      var isOpen = item.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.acc-item.open').forEach(function(el) {
-        el.classList.remove('open');
-        el.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
-      });
-      // Open clicked if it was closed
-      if (!isOpen) {
-        item.classList.add('open');
-        this.setAttribute('aria-expanded', 'true');
-        // Smooth scroll into view on mobile
-        if (window.innerWidth < 640) {
-          setTimeout(function() {
-            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 100);
-        }
-      }
-    });
-  });
-
-  // Search
-  var searchInput = document.getElementById('search-input');
-  var noResults = document.getElementById('no-results');
-
-  searchInput.addEventListener('input', function() {
-    var q = this.value.toLowerCase().trim();
-    var visibleCount = 0;
-
-    document.querySelectorAll('.acc-item').forEach(function(item) {
-      var title = (item.dataset.title || '').toLowerCase();
-      var desc = (item.querySelector('.acc-desc') ? item.querySelector('.acc-desc').textContent : '').toLowerCase();
-      var tag = (item.querySelector('.acc-tag') ? item.querySelector('.acc-tag').textContent : '').toLowerCase();
-      var match = !q || title.includes(q) || desc.includes(q) || tag.includes(q);
-      item.style.display = match ? '' : 'none';
-      if (match) visibleCount++;
-    });
-
-    // Hide empty category groups
-    document.querySelectorAll('.category-group').forEach(function(group) {
-      var visible = group.querySelectorAll('.acc-item:not([style*="display: none"])').length;
-      group.style.display = visible > 0 ? '' : 'none';
-    });
-
-    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-  });
-</script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Sleep<span>Guide</span><span style="color:rgba(250,248,243,0.3);font-size:0.7rem;font-family:'DM Sans',sans-serif;font-weight:300;margin-left:4px">.com.au</span></div>
+      <p class="footer-tagline">Australia's trusted sleep resource — independently researched since 2024</p>
+      <div class="footer-links">
+        <a href="/about-us/">About Us</a>
+        <a href="/contact/">Contact</a>
+        <a href="/blog/best-mattress-australia-2026/">Mattress Reviews</a>
+        <a href="/blog/how-to-choose-the-right-pillow/">Pillow Guides</a>
+        <a href="/sleep-score-optimizer/">Sleep Quiz</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-service/">Terms of Service</a>
+      </div>
+      <p class="footer-copy">© 2026 SleepGuide.com.au · Content is for informational purposes only and does not constitute medical advice.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
