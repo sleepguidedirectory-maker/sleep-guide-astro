@@ -1,11 +1,11 @@
 ---
 layout: ../../../layouts/BlogPost.astro
-title: "Say Goodbye to Snoring: Discover the Best Anti Snore Pillow Australia Has to Offer"
-
-categories: 
-  - "pillows"
+title: "Best Anti-Snore Pillow Australia 2026: Top 7 Picks for Peaceful Sleep"
 pubDate: "2026-01-07"
 description: "Discover the best anti-snore pillows in Australia for peaceful sleep."
+categories:
+  - pillows
+heroImage: "https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1"
 ---
 
 Best Anti Snore Pillow Australia
