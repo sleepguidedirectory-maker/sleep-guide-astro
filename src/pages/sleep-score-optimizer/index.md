@@ -103,6 +103,14 @@
     .footer-links a { font-size: 0.78rem; color: rgba(250,248,243,0.4); }
     .footer-copy { font-size: 0.72rem; color: rgba(250,248,243,0.2); }
   </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN2MKZB7F7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-CN2MKZB7F7");
+  </script>
 </head>
 <body>
 
