@@ -5,7 +5,7 @@ pubDate: "2026-01-07"
 description: "Discover the best anti-snore pillows in Australia for peaceful sleep."
 categories:
   - pillows
-heroImage: "https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1"
+heroImage: "https://images.pexels.com/photos/3030684/pexels-photo-3030684.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1"
 ---
 
 # Best Anti-Snore Pillow Australia 2026: Top 7 Picks for Peaceful Sleep
@@ -24,7 +24,7 @@ Snoring occurs due to obstructed airflow through the mouth and nose, causing tis
 - **Repositioning the Jaw:** Some designs gently encourage the jaw to stay forward or to the side.
 - **Encouraging Side Sleeping:** Many designs make side sleeping more comfortable and stable, naturally reducing snoring.
 
-![Anti-snore contour pillow supporting head and neck alignment](https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=1)
+![Anti-snore contour pillow supporting head and neck alignment](https://images.pexels.com/photos/9565729/pexels-photo-9565729.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=1)
 
 ## Our Top Picks: The Best Anti Snore Pillows in Australia
 
@@ -48,7 +48,7 @@ Specifically recommended for back sleepers, this pillow focuses on spinal and ne
 
 An excellent choice particularly for side sleepers, but versatile for back sleepers due to its height adjustability.
 
-![Supportive memory foam pillow with breathable cover on white bedding](https://images.pexels.com/photos/5490330/pexels-photo-5490330.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=1)
+![Supportive memory foam pillow with breathable cover on white bedding](https://images.pexels.com/photos/3768592/pexels-photo-3768592.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=1)
 
 - **Features:** Adjustable and ergonomically contoured design, customisable height, breathable cover
 - **Pros:** Excellent for side sleepers, pressure relief, promotes airflow
@@ -82,7 +82,7 @@ Available at major retailers like Myer, known for its cradling design and CPAP c
 
 An all-natural solution made from Talalay latex, recommended by health professionals.
 
-![Natural latex contour pillow designed for optimal head and neck support](https://images.pexels.com/photos/6508357/pexels-photo-6508357.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=1)
+![Natural latex contour pillow designed for optimal head and neck support](https://images.pexels.com/photos/7445315/pexels-photo-7445315.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&dpr=1)
 
 - **Features:** All-Natural Talalay Latex, contour-style design, hypoallergenic, dust mite and mildew resistant
 - **Pros:** Promotes correct posture, highly breathable, durable and resilient
